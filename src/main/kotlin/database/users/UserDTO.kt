@@ -1,8 +1,9 @@
 package com.database.users
 
 class UserDTO (
-    val login: String,
-    val username: String,
+    val phone: String,
+    val name: String,
+    val surname: String,
     val email: String,
     val password: String
 )

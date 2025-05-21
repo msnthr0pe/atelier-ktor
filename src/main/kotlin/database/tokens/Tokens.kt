@@ -6,9 +6,9 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 // Определение таблицы токенов
 object Tokens : Table("tokens") {
-    private val login = Tokens.varchar("login", 25)
-    private val id = Tokens.varchar("id", 50)
-    private val token = Tokens.varchar("token", 50)
+    private val login = varchar("login", 25)
+    private val id = varchar("id", 50)
+    private val token = varchar("token", 50)
 
     // Функция для вставки токена
     fun insert(tokenDTO: TokenDTO) {

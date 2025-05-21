@@ -17,7 +17,7 @@ fun main() {
 }
 
 fun Application.module() {
-    Database.connect("jdbc:postgresql://localhost:5432/test",
+    Database.connect("jdbc:postgresql://localhost:5432/atelier",
         "org.postgresql.Driver",
         "postgres",
         "root")

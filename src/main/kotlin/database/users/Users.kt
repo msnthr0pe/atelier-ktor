@@ -1,25 +1,25 @@
 package com.database.users
 
-import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 
 object Users : Table("Users") {
-    val login = varchar("login", 25)
-    val password = varchar("password", 25)
-    val username = varchar("username",30)
-    val email = varchar("email", 25)
+    val phone = varchar("phone", 45)
+    val name = varchar("name",45)
+    val surname = varchar("surname",45)
+    val email = varchar("email", 45)
+    val password = varchar("password", 45)
 
     fun insert(userDTO: UserDTO) {
         transaction {
             insert {
-                it[login] = userDTO.login
-                it[password] = userDTO.password
-                it[username] = userDTO.username
+                it[phone] = userDTO.phone
+                it[name] = userDTO.name
+                it[surname] = userDTO.surname
                 it[email] = userDTO.email
+                it[password] = userDTO.password
             }
         }
     }
@@ -27,14 +27,15 @@ object Users : Table("Users") {
         return try {
             val result: UserDTO? = transaction {
                 Users
-                    .select { Users.login eq login }
+                    .select { email eq login }
                     .singleOrNull()
                     ?.let { row ->
                         UserDTO(
-                            login = row[Users.login],
-                            password = row[Users.password],
-                            username = row[Users.username],
-                            email = row[Users.email]
+                            phone = row[phone],
+                            name = row[name],
+                            surname = row[surname],
+                            email = row[email],
+                            password = row[password]
                         )
                     }
             }

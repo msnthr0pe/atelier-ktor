@@ -13,7 +13,7 @@ class LoginController (private val call: ApplicationCall) {
 
     suspend fun performLogin() {
         val receive = call.receive<LoginReceiveRemote>()
-        val userDTO = Users.fetchUser(receive.login)
+        val userDTO = Users.fetchUser(receive.email)
 
         if (userDTO == null) {
             call.respond(HttpStatusCode.BadRequest, "User not found")
@@ -23,7 +23,7 @@ class LoginController (private val call: ApplicationCall) {
                 Tokens.insert(
                     TokenDTO(
                         rowId = UUID.randomUUID().toString(),
-                        login = receive.login,
+                        login = receive.email,
                         token = token
                     )
                 )
