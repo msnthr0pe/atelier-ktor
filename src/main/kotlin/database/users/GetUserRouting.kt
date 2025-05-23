@@ -13,7 +13,7 @@ fun Application.configureGetUserRouting() {
     routing {
         post("/getuser") {
             val request = call.receive<TextDTO>()
-            val email = request.info
+            val email = request.email
             try {
                 val result: UserDTO? = transaction {
                     Users
@@ -25,7 +25,8 @@ fun Application.configureGetUserRouting() {
                                 surname = row[Users.surname],
                                 name = row[Users.name],
                                 email = row[Users.email],
-                                password = row[Users.password]
+                                password = row[Users.password],
+                                status = row[Users.status]
                             )
                         }
                 }

@@ -11,6 +11,7 @@ object Users : Table("Users") {
     val surname = varchar("surname",45)
     val email = varchar("email", 45)
     val password = varchar("password", 45)
+    val status = varchar("status", 45)
 
     fun insert(userDTO: UserDTO) {
         transaction {
@@ -20,6 +21,7 @@ object Users : Table("Users") {
                 it[surname] = userDTO.surname
                 it[email] = userDTO.email
                 it[password] = userDTO.password
+                it[status] = userDTO.status
             }
         }
     }
@@ -35,7 +37,8 @@ object Users : Table("Users") {
                             name = row[name],
                             surname = row[surname],
                             email = row[email],
-                            password = row[password]
+                            password = row[password],
+                            status = row[status]
                         )
                     }
             }

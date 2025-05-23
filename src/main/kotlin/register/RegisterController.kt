@@ -27,7 +27,8 @@ class RegisterController (val call: ApplicationCall) {
                         password = registerReceiveRemote.password,
                         name = registerReceiveRemote.name,
                         surname = registerReceiveRemote.surname,
-                        phone = registerReceiveRemote.phone
+                        phone = registerReceiveRemote.phone,
+                        status = registerReceiveRemote.status
                     )
                 )
             } catch (e: ExposedSQLException) {

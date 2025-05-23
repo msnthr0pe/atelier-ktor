@@ -8,11 +8,12 @@ class UserDTO (
     val name: String,
     val surname: String,
     val email: String,
-    val password: String
+    val password: String,
+    val status: String
 )
 
 @Serializable
-data class TextDTO(val info: String)
+data class TextDTO(val email: String)
 
 @Serializable
 data class PasswordDTO(
